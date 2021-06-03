@@ -22,7 +22,7 @@ before_script:
   - version=IBMZ_CONTAINER_VERSION
   - docker pull "$IMAGE_NAME" || true
 script:
-  - docker build --pull --cache-from "sandeepbatta/consul" --tag "sandeepbatta/consul" https://github.com/linux-on-ibm-z/dockerfile-examples/tree/master/Consul
+  - docker build --pull --cache-from "sandeepbatta/consul" --tag "sandeepbatta/consul" https://github.com/linux-on-ibm-z/dockerfile-examples/tree/master/Consul.git
 
 after_script:
   - docker images
