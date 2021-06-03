@@ -1,0 +1,31 @@
+arch: s390x
+os:   linux
+
+sudo: required
+services:
+  - docker
+env:
+  global:
+    - IMAGE_NAME=$IBMZ_CR_NAMESPACE/$IBMZ_CONTAINER_NAME
+    - REGISTRY_USER=$IBMZ_CR_USER
+    - REGISTRY_PASS=$IBMZ_CR_PWD
+    - secret: "this is a secret to push a docker image to hub.docker.com"
+
+before_script:
+  - version=IBMZ_CONTAINER_VERSION
+  - docker pull "$IMAGE_NAME" || true
+script:
+  - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" $IBMZ_CONTAINER_DOCKERFILE_PATH
+
+after_script:
+  - docker images
+
+before_deploy:
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:latest"
+  - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:${version}"
+deploy:
+  provider: script
+  script: docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}:${version}"
+  on:
+    branch: main
