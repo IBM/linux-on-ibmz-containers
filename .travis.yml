@@ -22,7 +22,7 @@ before_script:
   - version=IBMZ_CONTAINER_VERSION
   - docker pull "$IMAGE_NAME" || true
 script:
-  - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" $DOCKER_CONTEXT_URL
+  - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" https://github.com/linux-on-ibm-z/dockerfile-examples/tree/master/CouchDB.git
 
 after_script:
   - docker images
