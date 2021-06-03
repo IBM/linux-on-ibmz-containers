@@ -12,6 +12,7 @@ env:
     - IBMZ_CR_NAMESPACE=sandeepbatta
     - IBMZ_CR_USER=sandeepbatta
     - IBMZ_CR_PWD=myPassword
+    - DOCKER_CONTEXT_URL=$IBMZ_CONTAINER_DOCKERFILE_PATH.git
     - IMAGE_NAME=$IBMZ_CR_NAMESPACE/$IBMZ_CONTAINER_NAME
     - REGISTRY_USER=$IBMZ_CR_USER
     - REGISTRY_PASS=$IBMZ_CR_PWD
@@ -21,7 +22,7 @@ before_script:
   - version=IBMZ_CONTAINER_VERSION
   - docker pull "$IMAGE_NAME" || true
 script:
-  - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" $IBMZ_CONTAINER_DOCKERFILE_PATH
+  - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" $DOCKER_CONTEXT_URL
 
 after_script:
   - docker images
