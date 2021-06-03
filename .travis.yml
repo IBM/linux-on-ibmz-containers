@@ -6,7 +6,7 @@ services:
   - docker
 env:
   global:
-    - IBMZ_CONTAINER_NAME=ApacheCassandra
+    - IBMZ_CONTAINER_NAME=apachecassandra
     - IBMZ_CONTAINER_VERSION=3.11.10
     - IBMZ_CONTAINER_DOCKERFILE_PATH=https://github.com/linux-on-ibm-z/dockerfile-examples/tree/master/ApacheCassandra
     - IBMZ_CR_NAMESPACE=sandeepbatta
