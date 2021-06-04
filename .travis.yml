@@ -22,7 +22,8 @@ before_script:
   - version=IBMZ_CONTAINER_VERSION
   - docker pull "$IMAGE_NAME" || true
 script:
-  - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" $DOCKER_CONTEXT_URL
+#  - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" $DOCKER_CONTEXT_URL
+   - docker build -t "$IBMZ_CONTAINER_NAME:$version" $IBMZ_CONTAINER_DOCKERFILE_PATH
 
 after_script:
   - docker images
