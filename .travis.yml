@@ -11,7 +11,7 @@ env:
     - IBMZ_CONTAINER_DOCKERFILE_PATH=https://github.com/sandeep-at-ibm/ibm-clouddev-day
     - IBMZ_CR_NAMESPACE=sandeepbatta
     - IBMZ_CR_USER=sandeepbatta
-    - IBMZ_CR_PWD=myPassword
+    - IBMZ_CR_PWD=1Bujjai01#
     - DOCKER_CONTEXT_URL=$IBMZ_CONTAINER_DOCKERFILE_PATH
     - IMAGE_NAME=$IBMZ_CR_NAMESPACE/$IBMZ_CONTAINER_NAME
     - REGISTRY_USER=$IBMZ_CR_USER
@@ -25,7 +25,7 @@ script:
 #  - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" $DOCKER_CONTEXT_URL
 #  - docker build -t "$IBMZ_CONTAINER_NAME:$version" $IBMZ_CONTAINER_DOCKERFILE_PATH
 #  - docker build -t dockers390x:0.1 https://github.com/docker/rootfs.git#container:docker
-  - docker build -t testing:0.1 https://github.com/sandeep-at-ibm/sandeep-at-ibm.git
+  - docker build -t testing:0.1 https://github.com/sandeep-at-ibm.git#:ibm-clouddev-day
 
 after_script:
   - docker images
