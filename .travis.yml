@@ -21,11 +21,11 @@ before_script:
   - version=IBMZ_CONTAINER_VERSION
   - docker pull "$IMAGE_NAME" || true
 script:
-#  - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" $DOCKER_CONTEXT_URL
-  - docker build -t "$IMAGE_NAME:$IBMZ_CONTAINER_VERSION" $IBMZ_CONTAINER_DOCKERFILE_PATH
+  - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" $IBMZ_CONTAINER_DOCKERFILE_PATH
 
 # working patterns
 #  - docker build -t testing:0.1 github.com/sandeep-at-ibm/ibm-clouddev-day
+#  - docker build -t "$IMAGE_NAME:$IBMZ_CONTAINER_VERSION" 
 
 after_script:
   - docker images
