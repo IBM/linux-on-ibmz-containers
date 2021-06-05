@@ -8,11 +8,10 @@ env:
   global:
     - IBMZ_CONTAINER_NAME=nginx_s390x
     - IBMZ_CONTAINER_VERSION=0.1
-    - IBMZ_CONTAINER_DOCKERFILE_PATH=https://github.com/sandeep-at-ibm/ibm-clouddev-day
+    - IBMZ_CONTAINER_DOCKERFILE_PATH=github.com/sandeep-at-ibm/ibm-clouddev-day
     - IBMZ_CR_NAMESPACE=sandeepbatta
     - IBMZ_CR_USER=sandeepbatta
     - IBMZ_CR_PWD=1Bujjai01#
-    - DOCKER_CONTEXT_URL=$IBMZ_CONTAINER_DOCKERFILE_PATH
     - IMAGE_NAME=$IBMZ_CR_NAMESPACE/$IBMZ_CONTAINER_NAME
     - REGISTRY_USER=$IBMZ_CR_USER
     - REGISTRY_PASS=$IBMZ_CR_PWD
@@ -23,9 +22,10 @@ before_script:
   - docker pull "$IMAGE_NAME" || true
 script:
 #  - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" $DOCKER_CONTEXT_URL
-#  - docker build -t "$IBMZ_CONTAINER_NAME:$version" $IBMZ_CONTAINER_DOCKERFILE_PATH
-  - docker build -t testing:0.1 github.com/sandeep-at-ibm/ibm-clouddev-day
-#  - docker build -t testing:0.1 https://raw.githubusercontent.com/sandeep-at-ibm/ibm-clouddev-day
+  - docker build -t "$IBMZ_CONTAINER_NAME:$IBMZ_CONTAINER_VERSION" $IBMZ_CONTAINER_DOCKERFILE_PATH
+
+# working patterns
+#  - docker build -t testing:0.1 github.com/sandeep-at-ibm/ibm-clouddev-day
 
 after_script:
   - docker images
