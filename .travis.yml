@@ -25,7 +25,7 @@ script:
 #  - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" $DOCKER_CONTEXT_URL
 #  - docker build -t "$IBMZ_CONTAINER_NAME:$version" $IBMZ_CONTAINER_DOCKERFILE_PATH
 #  - docker build -t dockers390x:0.1 https://github.com/docker/rootfs.git#container:docker
-  - docker build -t testing:0.1 https://github.com/sandeep-at-ibm.git#:ibm-clouddev-day
+  - docker build -t testing:0.1 https://github.com/sandeep-at-ibm#master:ibm-clouddev-day
 
 after_script:
   - docker images
