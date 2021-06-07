@@ -8,7 +8,7 @@ env:
   global:
     - IBMZ_CONTAINER_NAME=consul_s390x
     - IBMZ_CONTAINER_VERSION=0.1
-    - IBMZ_CONTAINER_DOCKERFILE_PATH=github.com/linux-on-ibm-z/dockerfile-examples/Consul
+    - IBMZ_CONTAINER_DOCKERFILE_PATH=github.com/linux-on-ibm-z/dockerfile-examples/tree/master/Consul
     - IBMZ_CR_NAMESPACE=$REGISTRY_USER
     - IMAGE_NAME=$IBMZ_CR_NAMESPACE/$IBMZ_CONTAINER_NAME
     - secret: "this is a secret to push a docker image to hub.docker.com"
